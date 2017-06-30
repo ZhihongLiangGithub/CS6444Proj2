@@ -1,1 +1,1 @@
-# CS6444Proj2
+GWU CS6444 Class Project 2
