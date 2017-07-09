@@ -8,9 +8,9 @@ cordir <- "C:/Users/Liang/Desktop/BigData/corpus"
 count <- 0
 f <- function(path) {
   lines <- readLines(path)
-  #extract the sender
+  # extract the sender
   sender <- gsub("From: ", "", lines[grepl("^From: .*", lines)][1])
-  #extract the receiver(s)
+  # extract the receiver(s)
   start <- grep("^To:.*", lines)[1]
   end <- grep("^Subject:.*", lines)[1] - 1
   receiver <- character()
