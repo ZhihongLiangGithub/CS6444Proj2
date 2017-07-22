@@ -35,6 +35,6 @@ files <- list.files(path = maildir,
                     full.names = T,
                     recursive = T)
 lapply(files, f)
-vc <- VCorpus(DirSource(cordir))
+vc <- VCorpus(DirSource(cordir), readerControl = list(reader = readMail))
 
 save(vc, file = "corpus.RData")
