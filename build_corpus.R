@@ -1,4 +1,5 @@
 library(tm)
+library(tm.plugin.mail)
 # central people
 cp <-
   "david.forster@enron.com|jeff.dasovich@enron.com|tana.jones@enron.com|veronica.espinoza@enron.com|steven.kean@enron.com"
@@ -6,6 +7,7 @@ maildir <-
   "C:/Users/Liang/Desktop/BigData/enron_mail_20150507/maildir"
 cordir <- "C:/Users/Liang/Desktop/BigData/corpus"
 count <- 0
+# determine whether an email is sent/received by central people
 f <- function(path) {
   lines <- readLines(path)
   # extract the sender
@@ -31,6 +33,7 @@ f <- function(path) {
     file.copy(path, paste(c(cordir, count), collapse = "/"))
   }
 }
+# list the files in enron mail dataset
 files <- list.files(path = maildir,
                     full.names = T,
                     recursive = T)
