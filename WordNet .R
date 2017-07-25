@@ -25,10 +25,13 @@ library(wordnet)
 setDict("C:\\Program Files (x86)\\WordNet\\2.1\\dict")
 Sys.setenv(WNHOME = "C:\\Program Files (x86)\\WordNet\\2.1")
 #print adverb word's part of speech
-if(initDict()) {
-  filter <- getTermFilter("StartsWithFilter", "", TRUE)
-  terms <- getIndexTerms("ADVERB", 1000, filter)
-  terms_result <- sapply(terms, getLemma)
-}
+> lapply(lg,function(x){
++     sapply(unlist(strsplit(as.character(x),"[[:space:]]+")), function(word) {
++         x.filter <- getTermFilter("StartsWithFilter", word, TRUE)
++         terms    <- getIndexTerms("NOUN",1,x.filter)
++         if(!is.null(terms)) sapply(terms,getLemma)
++     })
++ })
+lg
 head(terms_result)
 
