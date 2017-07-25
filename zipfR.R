@@ -1,9 +1,9 @@
 #analyze word frequency
 lgtdm2<-TermDocumentMatrix(lgstop, control = list(wordLengths = c(1,Inf)))
-freq.terms <- findFreqTerms(lgtdm2, lowfreq = 5)
+freq.terms <- findFreqTerms(lgtdm2, lowfreq = 0)
 freq.terms
 term.freq <- rowSums(as.matrix(lgtdm2))
-term.freq <- subset(term.freq, term.freq >= 5)
+term.freq <- subset(term.freq, term.freq >= 0)
 df <- data.frame(term = names(term.freq), freq = term.freq)
 View(df)
 #transfer data-frame into spc classes
